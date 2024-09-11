@@ -3,9 +3,8 @@ import { SEO } from "astro-seo";
 import Footer from "@components/footer.astro";
 import Navbar from "@components/navbar/navbar.astro";
 import "@fontsource-variable/inter/index.css";
-import '@fontsource-variable/bricolage-grotesque';
-
-
+import "@fontsource-variable/bricolage-grotesque";
+import { ViewTransitions } from "astro:transitions";
 
 export interface Props {
   title: string;
@@ -21,11 +20,11 @@ const resolvedImageWithDomain = new URL(
 const { title } = Astro.props;
 
 const makeTitle = title
-  ? title + " | " + "Astroship"
+  ? title
   : "Astroship - Starter Template for Astro with Tailwind CSS";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -36,18 +35,18 @@ const makeTitle = title
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="Astroship is a starter website template for Astro built with TailwindCSS."
+      description="Professional CV for Senior Software Engineer Yeison Garzon T."
       canonical={canonicalURL}
       twitter={{
-        creator: "@surjithctly",
-        site: "@web3templates",
+        creator: "@devyeisont",
+        site: "@devyeisont",
         card: "summary_large_image",
       }}
       openGraph={{
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `Astroship - Starter Template for Astro`,
+          title: `CV | Senior Software Engineer Yeison Garzon T.`,
           image: resolvedImageWithDomain,
         },
         image: {
@@ -55,6 +54,7 @@ const makeTitle = title
         },
       }}
     />
+    <ViewTransitions />
   </head>
   <body>
     <Navbar />

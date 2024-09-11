@@ -1,0 +1,51 @@
+---
+import Particles from "astro-particles";
+import type { ISourceOptions } from "tsparticles-engine";
+
+interface Props {
+  options: ISourceOptions;
+}
+
+const { options } = Astro.props;
+---
+
+<div class="particles-container">
+  <Particles id="tsparticles" options={options} init="particlesInit" />
+  <div class="content">
+    <slot />
+  </div>
+</div>
+
+<script>
+  import { type Container, type Engine, tsParticles } from "tsparticles-engine";
+  import { loadFull } from "tsparticles";
+
+  window.particlesInit = async (engine: Engine) => {
+    await loadFull(engine);
+  };
+
+  window.particlesLoaded = function (container: Container) {
+    console.log("particlesLoaded callback");
+  };
+</script>
+
+<style>
+  .particles-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
