@@ -1,0 +1,44 @@
+---
+// Importar componentes y datos necesarios
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import ProjectList from "@components/projectlist";
+
+// Filtrar y ordenar los proyectos
+const publishedProjects = await getCollection("projects", ({ data }) => {
+  return !data.draft && data.publishDate < new Date();
+});
+
+const sortedProjects = publishedProjects.sort((a, b) => {
+  const dateA = new Date(a.data.publishDate);
+  const dateB = new Date(b.data.publishDate);
+  return dateB.getTime() - dateA.getTime();
+});
+---
+
+<Layout title="CV | Proyectos">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Mis proyectos</Fragment>
+      <Fragment slot="desc">
+        Disponibles:{" "}
+        <span class="text-blue-600">{sortedProjects.length}</span>
+      </Fragment>
+    </Sectionhead>
+
+    <ProjectList projects={sortedProjects} client:load />
+  </Container>
+</Layout>
+
+<style>
+  /* Ocultar la barra de desplazamiento pero mantener la funcionalidad */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>

@@ -4,66 +4,12 @@ import heroImage from "assets/astronauta.png";
 import Link from "@components/ui/link.astro";
 import { Icon } from "astro-icon/components";
 import ParticlesBackground from "@components/particles.astro";
-import type { ISourceOptions } from "tsparticles-engine";
-
-const options: ISourceOptions = {
-  background: {
-    color: "#ffffff",
-  },
-  fullScreen: {
-    zIndex: -1,
-  },
-  interactivity: {
-    modes: {
-      bubble: {
-        distance: 200,
-        duration: 2,
-        opacity: 0,
-        size: 0,
-        speed: 3,
-      },
-      repulse: {
-        distance: 400,
-        duration: 0.4,
-      },
-    },
-  },
-  particles: {
-    color: { value: "#4D4D4D" },
-    move: {
-      direction: "none",
-      enable: true,
-      outModes: "out",
-      random: true,
-      speed: 0.3,
-    },
-    number: {
-      density: {
-        enable: true,
-      },
-      value: 600,
-    },
-    opacity: {
-      animation: {
-        enable: true,
-        speed: 5,
-      },
-      value: { min: 0.3, max: 0.6 },
-    },
-    shape: {
-      type: "circle",
-    },
-    size: {
-      value: 1,
-    },
-  },
-};
+import { options } from "@utils/particles";
 ---
 
 <ParticlesBackground options={options}>
-<main
-  class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
-  
+  <main
+    class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
     <div class="py-6 md:order-1 hidden md:block">
       <Picture
         src={heroImage}
@@ -107,5 +53,5 @@ const options: ISourceOptions = {
         </Link>
       </div>
     </div>
-</main>
+  </main>
 </ParticlesBackground>

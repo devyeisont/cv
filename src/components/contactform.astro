@@ -5,12 +5,16 @@ import Button from "./ui/button.astro";
 <!-- To make this contact form work, create your free access key from https://web3forms.com/
      Then you will get all form submissions in your email inbox. -->
 <form
+  lang="es"
   action="https://api.web3forms.com/submit"
   method="POST"
   id="form"
-  class="needs-validation"
-  novalidate>
-  <input type="hidden" name="access_key" value="f3c9c1e8-fe01-4bd5-a52b-21306be194b5" />
+  class="needs-validation">
+  <input
+    type="hidden"
+    name="access_key"
+    value="f3c9c1e8-fe01-4bd5-a52b-21306be194b5"
+  />
   <!-- Create your free access key from https://web3forms.com/ -->
   <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
   <div class="mb-5">
@@ -18,6 +22,8 @@ import Button from "./ui/button.astro";
       type="text"
       placeholder="Nombre completo"
       required
+      oninvalid="this.setCustomValidity('Por favor, introduce tu nombre')"
+      onchange="this.setCustomValidity('')"
       class="w-full px-4 py-3 border-2 placeholder:text-gray-800 rounded-md outline-none focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
       name="name"
     />
@@ -32,6 +38,8 @@ import Button from "./ui/button.astro";
       placeholder="Correo electrónico"
       name="email"
       required
+      oninvalid="this.setCustomValidity('Por favor, introduce un correo electrónico válido')"
+      onchange="this.setCustomValidity('')"
       class="w-full px-4 py-3 border-2 placeholder:text-gray-800 rounded-md outline-none focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
     />
     <div class="empty-feedback text-red-400 text-sm mt-1">
@@ -46,6 +54,8 @@ import Button from "./ui/button.astro";
       name="message"
       required
       placeholder="Tu mensaje"
+      oninvalid="this.setCustomValidity('Por favor, introduce tu mensaje')"
+      onchange="this.setCustomValidity('')"
       class="w-full px-4 py-3 border-2 placeholder:text-gray-800 rounded-md outline-none h-36 focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100"
     ></textarea>
     <div class="empty-feedback invalid-feedback text-red-400 text-sm mt-1">
@@ -91,7 +101,7 @@ import Button from "./ui/button.astro";
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
 
-    result.innerHTML = "Sending...";
+    result.innerHTML = "Enviando...";
 
     fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -105,16 +115,14 @@ import Button from "./ui/button.astro";
         let json = await response.json();
         if (response.status == 200) {
           result.classList.add("text-green-500");
-          result.innerHTML = json.message;
+          result.innerHTML = "¡Gracias por tu mensaje!";
         } else {
-          console.log(response);
           result.classList.add("text-red-500");
           result.innerHTML = json.message;
         }
       })
-      .catch((error) => {
-        console.log(error);
-        result.innerHTML = "Something went wrong!";
+      .catch(() => {
+        result.innerHTML = "Algo salió mal!";
       })
       .then(function () {
         form.reset();

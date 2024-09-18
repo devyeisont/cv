@@ -1,57 +1,192 @@
 ---
-import { getCollection } from "astro:content";
-import { Picture } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
+import ParticlesBackground from "@components/particles.astro";
+import { Icon } from "astro-icon/components";
+import { options } from "@utils/particles";
 
-// Filter team entries with 'draft: false' & date before current date
-const publishedTeamMembers = await getCollection("team", ({ data }) => {
-  return !data.draft && data.publishDate < new Date();
-});
+const skills = [
+  "Node.js",
+  "React",
+  "Next.js",
+  "JavaScript",
+  "TypeScript",
+  "Git",
+  "React Native",
+  "SQL",
+  "NoSQL",
+  "HTML/CSS",
+  "Express.js",
+  "Astro",
+  "Dart",
+  "Flutter",
+  "Java",
+  "C#",
+  "Redux",
+  "Docker",
+  "Jest",
+  "Mocha",
+  "Chai",
+  "Firebase",
+  "GraphQL",
+  "Figma",
+  "AWS",
+  "Azure",
+  "GCP",
+];
 ---
 
-<Layout title="About">
+<Layout title="CV | Acerca de mí">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">About</Fragment>
-      <Fragment slot="desc">We are a small passionate team.</Fragment>
+      <Fragment slot="title">Acerca de mí</Fragment>
+      <Fragment slot="desc">👨‍🚀 Ingeniero de software senior</Fragment>
     </Sectionhead>
 
-    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
-      <h2 class="font-bold text-3xl text-gray-800">
-        Empowering the world with Astro.
-      </h2>
-      <p class="text-lg leading-relaxed text-slate-500">
-        We're a multi-cultural team from around the world! We come from diverse
-        backgrounds, bringing different personalities, experiences and skills to
-        the job. This is what makes our team so special.
-      </p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
-      {
-        publishedTeamMembers.map((teamMemberEntry) => (
-          <div class="group">
-            <div class="w-full aspect-square">
-              <Picture
-                src={teamMemberEntry.data.avatar.src}
-                alt={teamMemberEntry.data.avatar.alt}
-                sizes="(max-width: 800px) 100vw, 400px"
-                width={400}
-                height={400}
-                class="w-full rounded-md rounded transition group-hover:-translate-y-1 group-hover:shadow-xl bg-white object-cover object-center aspect-square"
-              />
-            </div>
+    <main class="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8 mt-20">
+      <section class="bg-white shadow rounded-lg p-6 mb-8">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">
+          🧑‍💻 Yeison Andrés Garzón Toro
+        </h2>
+        <p class="text-gray-700">
+          Soy Ingeniero de Software, con especialización en desarrollo Full
+          Stack.
+          <br />
+          Tengo experiencia en el desarrollo de aplicaciones web y móviles, tanto
+          en el <strong>front-end</strong> como en el <strong>back-end</strong>.
+          <br />
+          Me especializo en la creación de experiencias digitales impresionantes
+          utilizando tecnologías como <strong>React</strong>, <strong
+            >React Native</strong
+          >, <strong>Node.js</strong>, <strong>JavaScript</strong>, y bases de
+          datos <strong>SQL</strong> y <strong>NoSQL</strong> 🌐.
+          <br />
+          <br />
+          He trabajado en sectores que requieren la transformación de ideas en aplicaciones
+          funcionales, y he colaborado en equipos multidisciplinarios para desarrollar
+          APIs eficientes y optimizar el rendimiento.
+          <br />
+          He logrado desarrollar y lanzar aplicaciones que no solo cumplen con los
+          requisitos funcionales, sino que también proporcionan una experiencia de
+          usuario excepcional ✨.
+          <br />
+          <br />
+          Mis contribuciones han ayudado a mejorar la usabilidad y eficiencia de
+          los productos, dejando una impresión duradera en los usuarios.
+          <br />
+          Mis habilidades principales son: Trabajo en equipo, Creatividad, Resolución
+          de problemas.
+          <br />
+          <br />
+          Actualmente, mi objetivo profesional es seguir avanzando en el desarrollo
+          de software, con un enfoque en la usabilidad y la experiencia del usuario
+          🛠️.
+          <br />
+          Me interesa profundizar en nuevas tecnologías y continuar mejorando mis
+          habilidades en la creación de soluciones digitales innovadoras y eficaces.
+        </p>
+      </section>
 
-            <div class="mt-4 text-center">
-              <h2 class="text-lg text-gray-800">{teamMemberEntry.data.name}</h2>
-              <h3 class="text-sm text-slate-500">
-                {teamMemberEntry.data.title}
-              </h3>
-            </div>
+      <section class="bg-white shadow rounded-lg p-6 mb-8">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">
+          Habilidades técnicas
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {
+            skills.map((skill) => (
+              <div class="bg-gray-200 rounded-full px-4 py-2 text-center text-gray-700">
+                {skill}
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="bg-white shadow rounded-lg p-6 mb-8">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Educación</h2>
+        <div class="space-y-6">
+          {
+            [
+              {
+                title: "Ingeniero de Software",
+                university: "Universidad Autónoma Latinoamericana",
+                period: "2018 - 2024",
+              },
+            ].map((job, index) => (
+              <div class="flex items-start">
+                <Icon
+                  class="size-6 md:size-8 text-gray-600 mr-4 mt-1"
+                  name="cil:education"
+                />
+                <div>
+                  <h3 class="text-lg font-semibold text-gray-900">
+                    {job.title}
+                  </h3>
+                  <p class="text-gray-600">{job.university}</p>
+                  <p class="text-gray-500 text-sm">{job.period}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="bg-white shadow rounded-lg p-6">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">
+          Mis redes sociales
+        </h2>
+        <div class="space-y-4">
+          <div class="flex items-center">
+            <Icon
+              class="size-5 text-gray-500 mr-4 ml-1"
+              name="simple-icons:linkedin"
+            />
+            <a
+              class="text-gray-700"
+              href="https://www.linkedin.com/in/yeison-toro/"
+              target="_blank">Linkedin 🛸</a
+            >
           </div>
-        ))
-      }
-    </div>
+
+          <div class="flex items-center">
+            <Icon
+              class="size-5 text-gray-500 mr-4 ml-1"
+              name="simple-icons:facebook"
+            />
+            <a
+              class="text-gray-700"
+              href="https://www.facebook.com/yeisondev"
+              target="_blank">Facebook</a
+            >
+          </div>
+          <div class="flex items-center">
+            <Icon
+              class="size-5 text-gray-500 mr-4 ml-1"
+              name="simple-icons:instagram"
+            />
+            <a
+              class="text-gray-700"
+              href="https://www.instagram.com/yeison.js"
+              target="_blank">Instagram</a
+            >
+          </div>
+          <div class="flex items-center">
+            <Icon class="size-6 text-gray-500 mr-4" name="bx:mail-send" />
+            <a class="text-gray-700" href="mailto:garzontoroyeison@gmail.com"
+              >garzontoroyeison@gmail.com</a
+            >
+          </div>
+          <div class="flex items-center">
+            <Icon class="size-6 text-gray-500 mr-4" name="bx:phone" />
+            <a class="text-gray-700" href="tel:+57 (317) 783 7117"
+              >+57 (317) 783 7117</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <ParticlesBackground options={options} />
+    </main>
   </Container>
 </Layout>
