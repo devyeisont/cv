@@ -1,12 +1,7 @@
 ---
 import Particles from "astro-particles";
 import type { ISourceOptions } from "tsparticles-engine";
-
-interface Props {
-  options: ISourceOptions;
-}
-
-const { options } = Astro.props;
+import { options } from "@utils/particles";
 ---
 
 <div class="particles-container">
@@ -23,29 +18,4 @@ const { options } = Astro.props;
   window.particlesInit = async (engine: Engine) => {
     await loadFull(engine);
   };
-
-  window.particlesLoaded = function (container: Container) {
-    console.log("particlesLoaded callback");
-  };
 </script>
-
-<style>
-  .particles-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  .content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-</style>

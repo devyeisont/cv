@@ -32,6 +32,9 @@ importers:
       '@iconify-json/cil':
         specifier: ^1.2.0
         version: 1.2.0
+      '@iconify-json/ic':
+        specifier: ^1.2.1
+        version: 1.2.1
       '@iconify-json/simple-icons':
         specifier: ^1.1.102
         version: 1.1.102
@@ -615,6 +618,9 @@ packages:
 
   '@iconify-json/cil@1.2.0':
     resolution: {integrity: sha512-mLau0fuwUSAz5xmwNDOuDgT5XsvCKBN0V2iclwsZEu0nNq3lpjXwDNGlKWxJb8kRDUw0/Lm+Dc+3TKpcuglhow==}
+
+  '@iconify-json/ic@1.2.1':
+    resolution: {integrity: sha512-UjL/bjJP/T5EV881+hTzcfTKVo0KEUjhnMiJcLtPzNgPtU2KZZmRx8BSKKR61H4CN/5FTEbyawGyG0aEt3SwGQ==}
 
   '@iconify-json/simple-icons@1.1.102':
     resolution: {integrity: sha512-ErRQGs7tjGsq4sj5SSeYwBOQ766yd9LtWblWakyL+ugg1k48ImabkI3mptDN5o+XSUb9SC+b7YNSStlrrecqNQ==}
@@ -4741,6 +4747,10 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/cil@1.2.0':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/ic@1.2.1':
     dependencies:
       '@iconify/types': 2.0.0
 

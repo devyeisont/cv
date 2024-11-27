@@ -5,6 +5,7 @@ import Navbar from "@components/navbar/navbar.astro";
 import "@fontsource-variable/inter/index.css";
 import "@fontsource-variable/bricolage-grotesque";
 import { ViewTransitions } from "astro:transitions";
+import ParticlesBackground from "@components/particles.astro";
 
 export interface Props {
   title: string;
@@ -57,7 +58,9 @@ const makeTitle = title
     <ViewTransitions />
   </head>
   <body>
+    
     <Navbar />
+    <ParticlesBackground />
     <slot />
     <Footer />
     <style is:global>

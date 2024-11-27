@@ -35,19 +35,16 @@ export default function ProjectList({ projects }) {
     <div className="container mx-auto px-4">
       <div className="ml-3 flex flex-col gap-3 mx-auto  mt-10">
         <h2 className=" font-bold text-3xl text-gray-800 ">
-        📂 Proyectos públicos y privados
+          📂 Proyectos públicos y privados
         </h2>
         <p className="text-lg leading-relaxed text-slate-500 ">
           La información de cada proyecto depende de la visibilidad, si es
-          público o privado.
-          En los proyectos privados, solo se puede ver
-          imágenes y videos de la implementación.
-          Para más información, puedes
-          contactarme en mi{" "}
+          público o privado. En los proyectos privados, solo se puede ver
+          imágenes y videos de la implementación. Para más información, puedes {" "}
           <a
             href="/contact"
             className="hover:underline font-medium text-blue-600">
-            página de contacto
+            contactarme
           </a>{" "}
           📩.
         </p>
@@ -57,9 +54,9 @@ export default function ProjectList({ projects }) {
         ref={scrollRef}
         className="flex overflow-x-auto space-x-6 py-4 px-4 mt-12 scrollbar-hide"
         aria-label="Lista de proyectos con desplazamiento horizontal">
-        {projects.map((project, index) => 
-          {
-            return(<a
+        {projects.map((project, index) => {
+          return (
+            <a
               key={index}
               href={`/projects/${project.slug}`}
               className="flex-none w-80 group hover:shadow-lg transition-all duration-300 rounded-lg overflow-hidden">
@@ -73,7 +70,7 @@ export default function ProjectList({ projects }) {
                   className="w-full h-full object-cover object-center transition-transform duration-300 transform group-hover:scale-105"
                 />
               </div>
-  
+
               <div className="mt-4 text-center p-4">
                 <h2 className="text-xl font-semibold text-gray-800">
                   {project.title}
@@ -82,9 +79,9 @@ export default function ProjectList({ projects }) {
                   {parseToColombianDate(project.data.publishDate)}
                 </h3>
               </div>
-            </a>)
-          }
-        )}
+            </a>
+          );
+        })}
       </div>
 
       <div className="text-center mt-6 text-sm text-gray-500">
